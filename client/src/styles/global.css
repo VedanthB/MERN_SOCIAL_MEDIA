@@ -42,7 +42,7 @@ img {
 @import url("./auth.css");
 
 /* -------- LOADING ---------- */
-/* @import url("./loading.css"); */
+@import url("./loading.css");
 
 /* -------- Header ---------- */
 /* @import url("./header.css"); */

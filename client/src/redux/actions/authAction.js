@@ -4,19 +4,21 @@ import valid from "../../utils/valid";
 
 export const login = (data) => async (dispatch) => {
   try {
-    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
     const res = await postDataAPI("login", data);
+    localStorage.setItem("firstLogin", true);
+
     dispatch({
-      type: GLOBALTYPES.AUTH,
+      type: "NOTIFY",
       payload: {
         token: res.data.access_token,
         user: res.data.user,
       },
     });
 
-    localStorage.setItem("firstLogin", true);
+    
     dispatch({
-      type: GLOBALTYPES.ALERT,
+      type: "NOTIFY",
       payload: {
         success: res.data.msg,
       },
