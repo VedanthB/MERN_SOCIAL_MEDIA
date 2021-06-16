@@ -1,17 +1,20 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageRender from "./components/PageRender";
-import Login from './pages/login';
-import Notify from './components/notify/Notify'
-
+import Login from "./pages/login";
+import Alert from "./components/alert/Alert"
+import { useSelector } from "react-redux";
+import Home from "./pages/home";
 
 function App() {
+  const { auth } = useSelector((state) => state);
+
   return (
     <Router>
-      <Notify />
+      <Alert />
       <input type="checkbox" id="theme" />
       <div className="App">
         <div className="main">
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/:page" component={PageRender} />
           <Route exact path="/:page/:id" component={PageRender} />
         </div>

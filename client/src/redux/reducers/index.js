@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import auth from "./authReducer";
-// import alert from "./alertReducer";
+import alert from "./alertReducer";
 // import theme from "./themeReducer";
 // import profile from "./profileReducer";
 // import status from "./statusReducer";
@@ -10,7 +10,7 @@ import auth from "./authReducer";
 // import discover from "./discoverReducer";
 // import suggestions from "./suggestionsReducer";
 // import socket from "./socketReducer";
-import notify from "./notifyReducer";
+// import notify from "./alertReducer";
 // import message from "./messageReducer";
 // import online from "./onlineReducer";
 // import call from "./callReducer";
@@ -18,7 +18,7 @@ import notify from "./notifyReducer";
 
 export default combineReducers({
   auth,
-  //   alert,
+  alert,
   //   theme,
   //   profile,
   //   status,
@@ -28,7 +28,7 @@ export default combineReducers({
   //   discover,
   //   suggestions,
   //   socket,
-    notify,
+  // notify,
   //   message,
   //   online,
   //   call,
