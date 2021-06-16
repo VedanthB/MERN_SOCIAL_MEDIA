@@ -13,6 +13,17 @@ app.get('/', (req, res) => {
     res.json({msg: "hello"})
 })
 
+const URI = process.env.MONGODB_URL
+mongoose.connect(URI, {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}, err => {
+    if(err) throw err;
+    console.log("db connected")
+})
+
 const port = process.env.PORT || 5000
 app.listen(port, () => {
     console.log("server is uppp on port" , port)
