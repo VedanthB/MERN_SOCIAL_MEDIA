@@ -4,17 +4,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UserCard = ({
-//   children,
+  //   children,
   user,
   border,
-//   handleClose,
-//   setShowFollowers,
-//   setShowFollowing,
-//   msg,
+  handleClose,
+  //   setShowFollowers,
+  //   setShowFollowing,
+  //   msg,
 }) => {
   const { theme } = useSelector((state) => state);
-
- 
 
   return (
     <div
@@ -23,7 +21,7 @@ const UserCard = ({
       <div>
         <Link
           to={`/profile/${user._id}`}
-        //   onClick={handleCloseAll}
+          //   onClick={handleCloseAll}
           className="d-flex align-items-center"
         >
           <Avatar src={user.avatar} size="big-avatar" />

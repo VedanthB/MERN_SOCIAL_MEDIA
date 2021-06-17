@@ -54,7 +54,7 @@ img {
 /* @import url("./header.css"); */
 
 /* -------- Profile ---------- */
-/* @import url("./profile.css"); */
+@import url("./profile.css");
 
 /* -------- Home ---------- */
 /* @import url("./home.css"); */
