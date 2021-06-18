@@ -1,6 +1,6 @@
 import { GLOBALTYPES, DeleteData } from "./globalTypes";
 import { getDataAPI, patchDataAPI } from "../../utils/fetchData";
-// import { imageUpload } from "../../utils/imageUpload";
+import { imageUpload } from "../../utils/imageUpload";
 // import { createNotify, removeNotify } from "../actions/notifyAction";
 
 export const PROFILE_TYPES = {
@@ -33,62 +33,62 @@ export const getProfileUsers = ({ users, id, auth }) =>
     }
   };
 
-// export const updateProfileUser =
-//   ({ userData, avatar, auth }) =>
-//   async (dispatch) => {
-//     if (!userData.fullname)
-//       return dispatch({
-//         type: GLOBALTYPES.ALERT,
-//         payload: { error: "Please add your full name." },
-//       });
+export const updateProfileUser =
+  ({ userData, avatar, auth }) =>
+  async (dispatch) => {
+    if (!userData.fullname)
+      return dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: "Please add your full name." },
+      });
 
-//     if (userData.fullname.length > 25)
-//       return dispatch({
-//         type: GLOBALTYPES.ALERT,
-//         payload: { error: "Your full name too long." },
-//       });
+    if (userData.fullname.length > 25)
+      return dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: "Your full name too long." },
+      });
 
-//     if (userData.story.length > 200)
-//       return dispatch({
-//         type: GLOBALTYPES.ALERT,
-//         payload: { error: "Your story too long." },
-//       });
+    if (userData.story.length > 200)
+      return dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: "Your story too long." },
+      });
 
-//     try {
-//       let media;
-//       dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+    try {
+      let media;
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
-//       if (avatar) media = await imageUpload([avatar]);
+      if (avatar) media = await imageUpload([avatar]);
 
-//       const res = await patchDataAPI(
-//         "user",
-//         {
-//           ...userData,
-//           avatar: avatar ? media[0].url : auth.user.avatar,
-//         },
-//         auth.token
-//       );
+      const res = await patchDataAPI(
+        "user",
+        {
+          ...userData,
+          avatar: avatar ? media[0].url : auth.user.avatar,
+        },
+        auth.token
+      );
 
-//       dispatch({
-//         type: GLOBALTYPES.AUTH,
-//         payload: {
-//           ...auth,
-//           user: {
-//             ...auth.user,
-//             ...userData,
-//             avatar: avatar ? media[0].url : auth.user.avatar,
-//           },
-//         },
-//       });
+      dispatch({
+        type: GLOBALTYPES.AUTH,
+        payload: {
+          ...auth,
+          user: {
+            ...auth.user,
+            ...userData,
+            avatar: avatar ? media[0].url : auth.user.avatar,
+          },
+        },
+      });
 
-//       dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } });
-//     } catch (err) {
-//       dispatch({
-//         type: GLOBALTYPES.ALERT,
-//         payload: { error: err.response.data.msg },
-//       });
-//     }
-//   };
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } });
+    } catch (err) {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: err.response.data.msg },
+      });
+    }
+  };
 
 // export const follow =
 //   ({ users, user, auth, socket }) =>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "../Avatar";
-// import EditProfile from "./EditProfile";
+import EditProfile from "./EditProfile";
 // import FollowBtn from "../FollowBtn";
 // import Followers from "./Followers";
 // import Following from "./Following";
@@ -14,7 +14,7 @@ const Info = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [userData, setUserData] = useState([]);
-  //   const [onEdit, setOnEdit] = useState(false);
+  const [onEdit, setOnEdit] = useState(false);
 
   //   const [showFollowers, setShowFollowers] = useState(false);
   //   const [showFollowing, setShowFollowing] = useState(false);
@@ -45,8 +45,14 @@ const Info = () => {
 
           <div className="info_content">
             <div className="info_content_title">
-              <h2>{user?.username}</h2>
-              <button className="btn btn-outline-info">Edit Profile</button>
+              <h2>{user.username}</h2>
+
+              <button
+                className="btn btn-outline-info"
+                onClick={() => setOnEdit(true)}
+              >
+                Edit Profile
+              </button>
             </div>
 
             <div className="follow_btn">
@@ -63,10 +69,10 @@ const Info = () => {
             <a href={user?.website} target="_blank" rel="noreferrer">
               {user?.website}
             </a>
-            {/* <p>{user.story}</p> */}
+            <p>{user.story}</p>
           </div>
 
-          {/* {onEdit && <EditProfile setOnEdit={setOnEdit} />} */}
+          {onEdit && <EditProfile setOnEdit={setOnEdit} />}
 
           {/* {showFollowers && (
             <Followers
