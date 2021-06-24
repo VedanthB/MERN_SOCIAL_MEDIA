@@ -8,7 +8,7 @@ import Home from "./pages/home";
 import { refreshToken } from "./redux/actions/authAction";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
-import StatusModal from "./components/statusModal";
+import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
 
 function App() {
