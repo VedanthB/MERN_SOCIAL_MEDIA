@@ -50,14 +50,11 @@ img {
 /* -------- Avatar ---------- */
 @import url("./avatar.css");
 
-/* -------- Header ---------- */
-/* @import url("./header.css"); */
-
 /* -------- Profile ---------- */
 @import url("./profile.css");
 
 /* -------- Home ---------- */
-/* @import url("./home.css"); */
+@import url("./home.css");
 
 /* -------- Status Modal ---------- */
 /* @import url("./status_modal.css"); */
