@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GLOBALTYPES } from "../redux/actions/globalTypes";
-// import { createPost, updatePost } from "../redux/actions/postAction";
+import { createPost, updatePost } from "../redux/actions/postAction";
 import Icons from "./Icons";
 import { imageShow, videoShow } from "../utils/mediaShow";
 
@@ -76,25 +76,25 @@ const StatusModal = () => {
       setStream(false);
     };
 
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   if (images.length === 0)
-    //     return dispatch({
-    //       type: GLOBALTYPES.ALERT,
-    //       payload: { error: "Please add your photo." },
-    //     });
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (images.length === 0)
+        return dispatch({
+          type: GLOBALTYPES.ALERT,
+          payload: { error: "Please add your photo." },
+        });
 
-    //   if (status.onEdit) {
-    //     dispatch(updatePost({ content, images, auth, status }));
-    //   } else {
-    //     dispatch(createPost({ content, images, auth, socket }));
-    //   }
+      if (status.onEdit) {
+        dispatch(updatePost({ content, images, auth, status }));
+      } else {
+        dispatch(createPost({ content, images, auth, socket }));
+      }
 
-    //   setContent("");
-    //   setImages([]);
-    //   if (tracks) tracks.stop();
-    //   dispatch({ type: GLOBALTYPES.STATUS, payload: false });
-    // };
+      setContent("");
+      setImages([]);
+      if (tracks) tracks.stop();
+      dispatch({ type: GLOBALTYPES.STATUS, payload: false });
+    };
 
     useEffect(() => {
       if (status.onEdit) {
@@ -105,7 +105,7 @@ const StatusModal = () => {
 
   return (
     <div className="status_modal">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="status_header">
           <h5 className="m-0">Create Post</h5>
           <span
