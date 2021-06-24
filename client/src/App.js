@@ -8,10 +8,11 @@ import Home from "./pages/home";
 import { refreshToken } from "./redux/actions/authAction";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
+import StatusModal from "./components/statusModal";
 import Register from "./pages/register";
 
 function App() {
-  const { auth } = useSelector((state) => state);
+  const { auth, status } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +25,8 @@ function App() {
       <input type="checkbox" id="theme" />
       <div className="App">
         <div className="main">
-          <Header />
+          {auth.token && <Header />}
+          {status && <StatusModal />}
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />
 
