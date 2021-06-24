@@ -26,6 +26,35 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  getPosts: async (req, res) => {
+    try {
+      // const features = new APIfeatures(
+      //   Posts.find({
+      //     user: [...req.user.following, req.user._id],
+      //   }),
+      //   req.query
+      // ).paginating();
+
+      const posts = await features.query
+        .sort("-createdAt")
+        .populate("user likes", "avatar username fullname followers")
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user likes",
+            select: "-password",
+          },
+        });
+
+      res.json({
+        msg: "Success!",
+        result: posts.length,
+        posts,
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = postCtrl;
