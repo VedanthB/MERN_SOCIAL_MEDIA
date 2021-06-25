@@ -70,6 +70,38 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  updatePost: async (req, res) => {
+    try {
+      const { content, images } = req.body;
+
+      const post = await Posts.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          content,
+          images,
+        }
+      )
+        .populate("user likes", "avatar username fullname")
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user likes",
+            select: "-password",
+          },
+        });
+
+      res.json({
+        msg: "Updated Post!",
+        newPost: {
+          ...post._doc,
+          content,
+          images,
+        },
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = postCtrl;
