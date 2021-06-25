@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import Header from "./components/header/Header";
 import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
+import { getPosts } from "./redux/actions/postAction";
 
 function App() {
   const { auth, status } = useSelector((state) => state);
@@ -18,6 +19,15 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (auth.token) {
+      dispatch(getPosts(auth.token));
+      // dispatch(getSuggestions(auth.token));
+      // dispatch(getNotifies(auth.token));
+    }
+  }, [dispatch, auth.token]);
+
 
   return (
     <Router>
