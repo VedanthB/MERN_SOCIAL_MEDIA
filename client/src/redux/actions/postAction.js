@@ -205,7 +205,7 @@ export const updatePost =
 //         recipients: res.data.newPost.user.followers,
 //         url: `/post/${post._id}`,
 //       };
-//       dispatch(removeNotify({ msg, auth, socket }));
+//       // dispatch(removeNotify({ msg, auth, socket }));
 //     } catch (err) {
 //       dispatch({
 //         type: GLOBALTYPES.ALERT,

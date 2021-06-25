@@ -7,11 +7,9 @@ router
   .post(auth, postCtrl.createPost)
   .get(auth, postCtrl.getPosts);
 
-router
-  .route("/post/:id")
-  .patch(auth, postCtrl.updatePost)
-  .get(auth, postCtrl.getPost)
-  .delete(auth, postCtrl.deletePost);
+router.route("/post/:id").patch(auth, postCtrl.updatePost);
+// .get(auth, postCtrl.getPost)
+// .delete(auth, postCtrl.deletePost);
 
 // router.patch("/post/:id/like", auth, postCtrl.likePost);
 
