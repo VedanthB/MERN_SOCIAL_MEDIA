@@ -60,7 +60,7 @@ img {
 @import url("./status_modal.css");
 
 /* -------- Comments ---------- */
-/* @import url("./comments.css"); */
+@import url("./comments.css");
 
 /* -------- Post Thumb ---------- */
 /* @import url("./post_thumb.css"); */
