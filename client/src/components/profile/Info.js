@@ -9,10 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProfileUsers } from "../../redux/actions/profileAction";
 
-const Info = () => {
-  const { auth, profile } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const { id } = useParams();
+const Info = ({id, auth, profile, dispatch}) => {
+ 
   const [userData, setUserData] = useState([]);
   const [onEdit, setOnEdit] = useState(false);
 

@@ -63,7 +63,7 @@ img {
 @import url("./comments.css");
 
 /* -------- Post Thumb ---------- */
-/* @import url("./post_thumb.css"); */
+@import url("./post_thumb.css");
 
 /* -------- Message---------- */
 /* @import url("./message.css"); */
