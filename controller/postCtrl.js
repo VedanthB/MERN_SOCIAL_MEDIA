@@ -185,26 +185,26 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  // getPostsDicover: async (req, res) => {
-  //   try {
-  //     const newArr = [...req.user.following, req.user._id];
+  getPostsDiscover: async (req, res) => {
+    try {
+      const newArr = [...req.user.following, req.user._id];
 
-  //     const num = req.query.num || 9;
+      const num = req.query.num || 9;
 
-  //     const posts = await Posts.aggregate([
-  //       { $match: { user: { $nin: newArr } } },
-  //       { $sample: { size: Number(num) } },
-  //     ]);
+      const posts = await Posts.aggregate([
+        { $match: { user: { $nin: newArr } } },
+        { $sample: { size: Number(num) } },
+      ]);
 
-  //     return res.json({
-  //       msg: "Success!",
-  //       result: posts.length,
-  //       posts,
-  //     });
-  //   } catch (err) {
-  //     return res.status(500).json({ msg: err.message });
-  //   }
-  // },
+      return res.json({
+        msg: "Success!",
+        result: posts.length,
+        posts,
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
   // deletePost: async (req, res) => {
   //   try {
   //     const post = await Posts.findOneAndDelete({
