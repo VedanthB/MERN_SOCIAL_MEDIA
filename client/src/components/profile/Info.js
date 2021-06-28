@@ -5,12 +5,9 @@ import FollowBtn from "../FollowBtn";
 import Followers from "./Followers";
 import Following from "./Following";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { getProfileUsers } from "../../redux/actions/profileAction";
 
-const Info = ({id, auth, profile, dispatch}) => {
- 
+const Info = ({ id, auth, profile, dispatch }) => {
   const [userData, setUserData] = useState([]);
   const [onEdit, setOnEdit] = useState(false);
 
@@ -21,7 +18,6 @@ const Info = ({id, auth, profile, dispatch}) => {
     if (id === auth.user?._id) {
       setUserData([auth.user]);
     } else {
-      dispatch(getProfileUsers({ users: profile.users, id, auth }));
       const newData = profile.users.filter((user) => user._id === id);
       setUserData(newData);
     }
@@ -38,8 +34,8 @@ const Info = ({id, auth, profile, dispatch}) => {
   return (
     <div className="info">
       {userData.map((user) => (
-        <div className="info_container" key={user?._id}>
-          <Avatar src={user?.avatar} size="supper-avatar" />
+        <div className="info_container" key={user._id}>
+          <Avatar src={user.avatar} size="supper-avatar" />
 
           <div className="info_content">
             <div className="info_content_title">

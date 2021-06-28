@@ -12,11 +12,11 @@ function Profile() {
 
   const { id } = useParams();
 
- useEffect(() => {
-   if (profile.ids.every((item) => item !== id)) {
-     dispatch(getProfileUsers({ id, auth }));
-   }
- }, [id, auth, dispatch, profile.ids]);
+  useEffect(() => {
+    if (profile.ids.every((item) => item !== id)) {
+      dispatch(getProfileUsers({ id, auth }));
+    }
+  }, [id, auth, dispatch, profile.ids]);
 
   return (
     <div className="profile">
