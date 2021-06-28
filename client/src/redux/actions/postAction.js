@@ -174,45 +174,45 @@ export const unLikePost =
     }
   };
 
-// export const getPost =
-//   ({ detailPost, id, auth }) =>
-//   async (dispatch) => {
-//     if (detailPost.every((post) => post._id !== id)) {
-//       try {
-//         const res = await getDataAPI(`post/${id}`, auth.token);
-//         dispatch({ type: POST_TYPES.GET_POST, payload: res.data.post });
-//       } catch (err) {
-//         dispatch({
-//           type: GLOBALTYPES.ALERT,
-//           payload: { error: err.response.data.msg },
-//         });
-//       }
-//     }
-//   };
+export const getPost =
+  ({ detailPost, id, auth }) =>
+  async (dispatch) => {
+    if (detailPost.every((post) => post._id !== id)) {
+      try {
+        const res = await getDataAPI(`post/${id}`, auth.token);
+        dispatch({ type: POST_TYPES.GET_POST, payload: res.data.post });
+      } catch (err) {
+        dispatch({
+          type: GLOBALTYPES.ALERT,
+          payload: { error: err.response.data.msg },
+        });
+      }
+    }
+  };
 
-// export const deletePost =
-//   ({ post, auth, socket }) =>
-//   async (dispatch) => {
-//     dispatch({ type: POST_TYPES.DELETE_POST, payload: post });
+export const deletePost =
+  ({ post, auth, socket }) =>
+  async (dispatch) => {
+    dispatch({ type: POST_TYPES.DELETE_POST, payload: post });
 
-//     try {
-//       const res = await deleteDataAPI(`post/${post._id}`, auth.token);
+    try {
+      const res = await deleteDataAPI(`post/${post._id}`, auth.token);
 
-//       // Notify
-//       const msg = {
-//         id: post._id,
-//         text: "added a new post.",
-//         recipients: res.data.newPost.user.followers,
-//         url: `/post/${post._id}`,
-//       };
-//       // dispatch(removeNotify({ msg, auth, socket }));
-//     } catch (err) {
-//       dispatch({
-//         type: GLOBALTYPES.ALERT,
-//         payload: { error: err.response.data.msg },
-//       });
-//     }
-//   };
+      // Notify
+      const msg = {
+        id: post._id,
+        text: "added a new post.",
+        recipients: res.data.newPost.user.followers,
+        url: `/post/${post._id}`,
+      };
+      // dispatch(removeNotify({ msg, auth, socket }));
+    } catch (err) {
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: err.response.data.msg },
+      });
+    }
+  };
 
 // export const savePost =
 //   ({ post, auth }) =>

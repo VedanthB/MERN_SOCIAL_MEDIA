@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { GLOBALTYPES } from "../../../redux/actions/globalTypes";
-// import { deletePost } from "../../../redux/actions/postAction";
+import { deletePost } from "../../../redux/actions/postAction";
 // import { BASE_URL } from "../../../utils/config";
 
 const CardHeader = ({ post }) => {
@@ -17,16 +17,16 @@ const CardHeader = ({ post }) => {
     dispatch({ type: GLOBALTYPES.STATUS, payload: { ...post, onEdit: true } });
   };
 
-  // const handleDeletePost = () => {
-  //   if (window.confirm("Are you sure want to delete this post?")) {
-  //     dispatch(deletePost({ post, auth, socket }));
-  //     return history.push("/");
-  //   }
-  // };
+  const handleDeletePost = () => {
+    if (window.confirm("Are you sure want to delete this post?")) {
+      dispatch(deletePost({ post, auth, socket }));
+      return history.push("/");
+    }
+  };
 
-  //   const handleCopyLink = () => {
-  //     navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`);
-  //   };
+    // const handleCopyLink = () => {
+    //   navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`);
+    // };
 
   return (
     <div className="card_header">
@@ -56,7 +56,7 @@ const CardHeader = ({ post }) => {
               <div className="dropdown-item" onClick={handleEditPost}>
                 <span className="material-icons">create</span> Edit Post
               </div>
-              <div className="dropdown-item">
+              <div className="dropdown-item" onClick={handleDeletePost}>
                 <span className="material-icons">delete_outline</span> Remove
                 Post
               </div>
