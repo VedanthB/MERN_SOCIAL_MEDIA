@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   likePost,
   unLikePost,
-//   savePost,
-//   unSavePost,
+  savePost,
+  unSavePost,
 } from "../../../redux/actions/postAction";
 // import ShareModal from "../../ShareModal";
 // import { BASE_URL } from "../../../utils/config";
@@ -50,29 +50,29 @@ const CardFooter = ({ post }) => {
   };
 
   // Saved
-//   useEffect(() => {
-//     if (auth.user.saved.find((id) => id === post._id)) {
-//       setSaved(true);
-//     } else {
-//       setSaved(false);
-//     }
-//   }, [auth.user.saved, post._id]);
+  useEffect(() => {
+    if (auth.user.saved.find((id) => id === post._id)) {
+      setSaved(true);
+    } else {
+      setSaved(false);
+    }
+  }, [auth.user.saved, post._id]);
 
-//   const handleSavePost = async () => {
-//     if (saveLoad) return;
+  const handleSavePost = async () => {
+    if (saveLoad) return;
 
-//     setSaveLoad(true);
-//     await dispatch(savePost({ post, auth }));
-//     setSaveLoad(false);
-//   };
+    setSaveLoad(true);
+    await dispatch(savePost({ post, auth }));
+    setSaveLoad(false);
+  };
 
-//   const handleUnSavePost = async () => {
-//     if (saveLoad) return;
+  const handleUnSavePost = async () => {
+    if (saveLoad) return;
 
-//     setSaveLoad(true);
-//     await dispatch(unSavePost({ post, auth }));
-//     setSaveLoad(false);
-//   };
+    setSaveLoad(true);
+    await dispatch(unSavePost({ post, auth }));
+    setSaveLoad(false);
+  };
 
   return (
     <div className="card_footer">
@@ -91,11 +91,11 @@ const CardFooter = ({ post }) => {
           <img src={Send} alt="Send" onClick={() => setIsShare(!isShare)} />
         </div>
 
-        {/* {saved ? (
+        {saved ? (
           <i className="fas fa-bookmark text-info" onClick={handleUnSavePost} />
         ) : (
           <i className="far fa-bookmark" onClick={handleSavePost} />
-        )} */}
+        )}
       </div>
 
       <div className="d-flex justify-content-between">
