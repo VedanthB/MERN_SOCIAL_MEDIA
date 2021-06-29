@@ -66,7 +66,7 @@ img {
 @import url("./post_thumb.css");
 
 /* -------- Message---------- */
-/* @import url("./message.css"); */
+@import url("./message.css");
 
 /* -------- Icons---------- */
 /* @import url("./icons.css"); */
