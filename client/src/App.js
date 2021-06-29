@@ -12,12 +12,19 @@ import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
 import { getPosts } from "./redux/actions/postAction";
 
+import io from "socket.io-client";
+import { GLOBALTYPES } from "./redux/actions/globalTypes";
+
 function App() {
   const { auth, status } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(refreshToken());
+
+    const socket = io();
+    dispatch({ type: GLOBALTYPES.SOCKET, payload: socket });
+    return () => socket.close();
   }, [dispatch]);
 
   useEffect(() => {
@@ -27,7 +34,6 @@ function App() {
       // dispatch(getNotifies(auth.token));
     }
   }, [dispatch, auth.token]);
-
 
   return (
     <Router>
