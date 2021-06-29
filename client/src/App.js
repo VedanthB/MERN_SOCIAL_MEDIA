@@ -11,10 +11,12 @@ import Header from "./components/header/Header";
 import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
 import { getPosts } from "./redux/actions/postAction";
-import SocketClient from './SocketClient';
+import SocketClient from "./SocketClient";
 
 import io from "socket.io-client";
 import { GLOBALTYPES } from "./redux/actions/globalTypes";
+import { getNotifies } from "./redux/actions/notifyAction";
+import { getSuggestions } from "./redux/actions/suggestionsAction";
 
 function App() {
   const { auth, status } = useSelector((state) => state);
@@ -31,8 +33,8 @@ function App() {
   useEffect(() => {
     if (auth.token) {
       dispatch(getPosts(auth.token));
-      // dispatch(getSuggestions(auth.token));
-      // dispatch(getNotifies(auth.token));
+      dispatch(getSuggestions(auth.token));
+      dispatch(getNotifies(auth.token));
     }
   }, [dispatch, auth.token]);
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { POST_TYPES } from "./redux/actions/postAction";
 import { GLOBALTYPES } from "./redux/actions/globalTypes";
+import { NOTIFY_TYPES } from "./redux/actions/notifyAction";
 
 const SocketClient = () => {
   const { auth, socket } = useSelector((state) => state);
@@ -61,6 +62,31 @@ const SocketClient = () => {
 
     return () => socket.off("unFollowToClient");
   }, [socket, dispatch, auth]);
+
+  // Notification
+  // useEffect(() => {
+  //   socket.on("createNotifyToClient", (msg) => {
+  //     dispatch({ type: NOTIFY_TYPES.CREATE_NOTIFY, payload: msg });
+
+  //     if (notify.sound) audioRef.current.play();
+  //     spawnNotification(
+  //       msg.user.username + " " + msg.text,
+  //       msg.user.avatar,
+  //       msg.url,
+  //       "V-NETWORK"
+  //     );
+  //   });
+
+  //   return () => socket.off("createNotifyToClient");
+  // }, [socket, dispatch, notify.sound]);
+
+  // useEffect(() => {
+  //   socket.on("removeNotifyToClient", (msg) => {
+  //     dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg });
+  //   });
+
+    // return () => socket.off("removeNotifyToClient");
+  // }, [socket, dispatch]);
 
   return <></>;
 };

@@ -10,7 +10,7 @@ import detailPost from "./detailPostReducer";
 import discover from "./discoverReducer";
 import suggestions from "./suggestionsReducer";
 import socket from "./socketReducer";
-// import notify from "./alertReducer";
+import notify from "./notifyReducer";
 // import message from "./messageReducer";
 // import online from "./onlineReducer";
 // import call from "./callReducer";
@@ -28,7 +28,7 @@ export default combineReducers({
   discover,
   suggestions,
   socket,
-  // notify,
+  notify,
   //   message,
   //   online,
   //   call,

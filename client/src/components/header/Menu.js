@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/authAction";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import Avatar from "../Avatar";
-// import NotifyModal from "../NotifyModal";
+import NotifyModal from "../NotifyModal";
 
 const Menu = () => {
   const navLinks = [
@@ -43,12 +43,12 @@ const Menu = () => {
           >
             <span
               className="material-icons"
-            //   style={{ color: notify.data.length > 0 ? "crimson" : "" }}
+              style={{ color: notify.data?.length > 0 ? "crimson" : "" }}
             >
               favorite
             </span>
 
-            {/* <span className="notify_length">{notify.data.length}</span> */}
+            <span className="notify_length">{notify.data?.length}</span>
           </span>
 
           <div
@@ -56,8 +56,8 @@ const Menu = () => {
             aria-labelledby="navbarDropdown"
             style={{ transform: "translateX(75px)" }}
           >
-            {/* <NotifyModal /> */}
-          </div> 
+            <NotifyModal />
+          </div>
         </li>
 
         <li className="nav-item dropdown" style={{ opacity: 1 }}>
@@ -69,11 +69,11 @@ const Menu = () => {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <Avatar src={auth.user?.avatar} size="medium-avatar" />
+            <Avatar src={auth.user.avatar} size="medium-avatar" />
           </span>
 
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <Link className="dropdown-item" to={`/profile/${auth.user?._id}`}>
+            <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>
               Profile
             </Link>
 
