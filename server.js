@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const SocketServer = require("./socketServer");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -14,7 +15,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
 io.on("connection", (socket) => {
-  console.log(socket.id + " connected");
+  SocketServer(socket);
 });
 
 //Routes

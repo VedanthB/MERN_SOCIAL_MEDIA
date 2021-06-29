@@ -11,6 +11,7 @@ import Header from "./components/header/Header";
 import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
 import { getPosts } from "./redux/actions/postAction";
+import SocketClient from './SocketClient';
 
 import io from "socket.io-client";
 import { GLOBALTYPES } from "./redux/actions/globalTypes";
@@ -43,6 +44,7 @@ function App() {
         <div className="main">
           {auth.token && <Header />}
           {status && <StatusModal />}
+          {auth.token && <SocketClient />}
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />
 
