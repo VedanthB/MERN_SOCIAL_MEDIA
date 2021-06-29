@@ -103,7 +103,7 @@ export const updateProfileUser =
   };
 
 export const follow =
-  ({ users, user, auth }) =>
+  ({ users, user, auth, socket }) =>
   async (dispatch) => {
     let newUser;
 
@@ -133,7 +133,7 @@ export const follow =
         null,
         auth.token
       );
-      // socket.emit("follow", res.data.newUser);
+      socket.emit("follow", res.data.newUser);
 
       // Notify
       // const msg = {
@@ -192,7 +192,7 @@ export const unfollow =
         null,
         auth.token
       );
-      // socket.emit("unFollow", res.data.newUser);
+      socket.emit("unFollow", res.data.newUser);
 
       // Notify
       // const msg = {

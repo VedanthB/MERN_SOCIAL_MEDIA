@@ -27,7 +27,7 @@ export const createComment =
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
 
       //   // Socket
-      //   socket.emit("createComment", newPost);
+        socket.emit("createComment", newPost);
 
       //   // Notify
       //   const msg = {
@@ -132,7 +132,7 @@ export const deleteComment =
 
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
 
-    // socket.emit("deleteComment", newPost);
+    socket.emit("deleteComment", newPost);
     try {
       deleteArr.forEach((item) => {
         deleteDataAPI(`comment/${item._id}`, auth.token);
