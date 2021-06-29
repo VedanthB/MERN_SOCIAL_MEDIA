@@ -64,29 +64,29 @@ const SocketClient = () => {
   }, [socket, dispatch, auth]);
 
   // Notification
-  // useEffect(() => {
-  //   socket.on("createNotifyToClient", (msg) => {
-  //     dispatch({ type: NOTIFY_TYPES.CREATE_NOTIFY, payload: msg });
+  useEffect(() => {
+    socket.on("createNotifyToClient", (msg) => {
+      dispatch({ type: NOTIFY_TYPES.CREATE_NOTIFY, payload: msg });
 
-  //     if (notify.sound) audioRef.current.play();
-  //     spawnNotification(
-  //       msg.user.username + " " + msg.text,
-  //       msg.user.avatar,
-  //       msg.url,
-  //       "V-NETWORK"
-  //     );
-  //   });
+      // if (notify.sound) audioRef.current.play();
+      // spawnNotification(
+      //   msg.user.username + " " + msg.text,
+      //   msg.user.avatar,
+      //   msg.url,
+      //   "V-NETWORK"
+      // );
+    });
 
-  //   return () => socket.off("createNotifyToClient");
-  // }, [socket, dispatch, notify.sound]);
+    return () => socket.off("createNotifyToClient");
+  }, [socket, dispatch]);
 
-  // useEffect(() => {
-  //   socket.on("removeNotifyToClient", (msg) => {
-  //     dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg });
-  //   });
+  useEffect(() => {
+    socket.on("removeNotifyToClient", (msg) => {
+      dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg });
+    });
 
-    // return () => socket.off("removeNotifyToClient");
-  // }, [socket, dispatch]);
+    return () => socket.off("removeNotifyToClient");
+  }, [socket, dispatch]);
 
   return <></>;
 };

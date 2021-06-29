@@ -67,15 +67,15 @@ const SocketServer = (socket) => {
   });
 
   // Notification
-  // socket.on("createNotify", (msg) => {
-  //   const client = users.find((user) => msg.recipients.includes(user.id));
-  //   client && socket.to(`${client.socketId}`).emit("createNotifyToClient", msg);
-  // });
+  socket.on("createNotify", (msg) => {
+    const client = users.find((user) => msg.recipients.includes(user.id));
+    client && socket.to(`${client.socketId}`).emit("createNotifyToClient", msg);
+  });
 
-  // socket.on("removeNotify", (msg) => {
-  //   const client = users.find((user) => msg.recipients.includes(user.id));
-  //   client && socket.to(`${client.socketId}`).emit("removeNotifyToClient", msg);
-  // });
+  socket.on("removeNotify", (msg) => {
+    const client = users.find((user) => msg.recipients.includes(user.id));
+    client && socket.to(`${client.socketId}`).emit("removeNotifyToClient", msg);
+  });
 };
 
 module.exports = SocketServer;

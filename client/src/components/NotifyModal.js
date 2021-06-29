@@ -5,35 +5,35 @@ import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 import moment from "moment";
 import {
-  // isReadNotify,
+  isReadNotify,
   NOTIFY_TYPES,
-  // deleteAllNotifies,
+  deleteAllNotifies,
 } from "../redux/actions/notifyAction";
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  // const handleIsRead = (msg) => {
-  //   dispatch(isReadNotify({ msg, auth }));
-  // };
+  const handleIsRead = (msg) => {
+    dispatch(isReadNotify({ msg, auth }));
+  };
 
   const handleSound = () => {
     dispatch({ type: NOTIFY_TYPES.UPDATE_SOUND, payload: !notify.sound });
   };
 
-  // const handleDeleteAll = () => {
-  //   const newArr = notify.data.filter((item) => item.isRead === false);
-  //   if (newArr.length === 0) return dispatch(deleteAllNotifies(auth.token));
+  const handleDeleteAll = () => {
+    const newArr = notify.data.filter((item) => item.isRead === false);
+    if (newArr.length === 0) return dispatch(deleteAllNotifies(auth.token));
 
-  //   if (
-  //     window.confirm(
-  //       `You have ${newArr.length} unread notices. Are you sure you want to delete all?`
-  //     )
-  //   ) {
-  //     return dispatch(deleteAllNotifies(auth.token));
-  //   }
-  // };
+    if (
+      window.confirm(
+        `You have ${newArr.length} unread notices. Are you sure you want to delete all?`
+      )
+    ) {
+      return dispatch(deleteAllNotifies(auth.token));
+    }
+  };
 
   return (
     <div style={{ minWidth: "300px" }}>
@@ -55,17 +55,17 @@ const NotifyModal = () => {
       </div>
       <hr className="mt-0" />
 
-      {notify.data?.length === 0 && (
+      {notify.data.length === 0 && (
         <img src={NoNotice} alt="NoNotice" className="w-100" />
       )}
 
       <div style={{ maxHeight: "calc(100vh - 200px)", overflow: "auto" }}>
-        {notify.data?.map((msg, index) => (
+        {notify.data.map((msg, index) => (
           <div key={index} className="px-2 mb-3">
             <Link
               to={`${msg.url}`}
               className="d-flex text-dark align-items-center"
-              // onClick={() => handleIsRead(msg)}
+              onClick={() => handleIsRead(msg)}
             >
               <Avatar src={msg.user.avatar} size="big-avatar" />
 
@@ -89,7 +89,7 @@ const NotifyModal = () => {
             </Link>
             <small className="text-muted d-flex justify-content-between px-2">
               {moment(msg.createdAt).fromNow()}
-              {/* {!msg.isRead && <i className="fas fa-circle text-primary" />} */}
+              {!msg.isRead && <i className="fas fa-circle text-primary" />}
             </small>
           </div>
         ))}
@@ -99,7 +99,7 @@ const NotifyModal = () => {
       <div
         className="text-right text-danger mr-2"
         style={{ cursor: "pointer" }}
-        // onClick={handleDeleteAll}
+        onClick={handleDeleteAll}
       >
         Delete All
       </div>

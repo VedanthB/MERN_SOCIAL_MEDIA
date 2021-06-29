@@ -39,16 +39,16 @@ export const createPost =
       dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
 
       //   // Notify
-        const msg = {
-          id: res.data.newPost._id,
-          text: "added a new post.",
-          recipients: res.data.newPost.user.followers,
-          url: `/post/${res.data.newPost._id}`,
-          content,
-          image: media[0].url,
-        };
+      const msg = {
+        id: res.data.newPost._id,
+        text: "added a new post.",
+        recipients: res.data.newPost.user.followers,
+        url: `/post/${res.data.newPost._id}`,
+        content,
+        image: media[0].url,
+      };
 
-        dispatch(createNotify({ msg, auth, socket }));
+      dispatch(createNotify({ msg, auth, socket }));
     } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,
