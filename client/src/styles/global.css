@@ -69,13 +69,13 @@ img {
 @import url("./message.css");
 
 /* -------- Icons---------- */
-/* @import url("./icons.css"); */
+@import url("./icons.css");
 
 /* -------- Call Modal---------- */
 /* @import url("./call_modal.css"); */
 
 /* --------- Responsive ------ */
-/* @media (max-width: 766px){
+@media (max-width: 766px){
   .header .navbar .logo{
     display: none;
   }
@@ -109,10 +109,10 @@ img {
   .status{
     padding: 20px 10px;
   }
-} */
+} 
 
-/* .mode{
+ .mode{
   width: 100%;
   height: 100vh;
   overflow: hidden;
-} */
+}
