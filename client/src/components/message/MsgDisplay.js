@@ -43,7 +43,7 @@ const MsgDisplay = ({ user, msg, theme, data }) => {
           )}
           {msg.media.map((item, index) => (
             <div key={index}>
-              {item.url.match(/video/i)
+              {item.url?.match(/video/i)
                 ? videoShow(item.url, theme)
                 : imageShow(item.url, theme)}
             </div>
