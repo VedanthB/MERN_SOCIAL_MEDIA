@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const SocketServer = require("./socketServer");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { ExpressPeerServer } = require("peer");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -18,6 +20,9 @@ const io = require("socket.io")(http);
 io.on("connection", (socket) => {
   SocketServer(socket);
 });
+
+// Create peer server
+ExpressPeerServer(http, { path: "/" });
 
 //Routes
 app.use("/api", require("./routes/authRouter"));
@@ -41,6 +46,13 @@ mongoose.connect(
     console.log("db connected");
   }
 );
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 http.listen(port, () => {

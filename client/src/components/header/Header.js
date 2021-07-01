@@ -8,7 +8,7 @@ const Header = () => {
     <div className="header bg-light">
       <nav
         className="navbar navbar-expand-lg navbar-light 
-            bg-light justify-content-between align-middle"
+             justify-content-between align-middle"
       >
         <Link to="/" className="logo">
           <h1

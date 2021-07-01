@@ -38,19 +38,19 @@ const RightSideBar = () => {
       )}
 
       <div style={{ opacity: 0.5 }} className="my-2">
-        <a
-          href="https://www.youtube.com/c/DevATHTML"
+        {/* <a
+          href=""
           target="_blank"
           rel="noreferrer"
           style={{ wordBreak: "break-all" }}
         >
-          https://www.youtube.com/c/DevATHTML
-        </a>
+          
+        </a> */}
         <small className="d-block">
-          Welcome to our channel "DevAT-VietNam"
+          welcome to the og gram 🔥❤️
         </small>
 
-        <small>&copy; 2021 V-NETWORK FROM DEV A.T VIET NAM</small>
+        <small>&copy; 2021 </small>
       </div>
     </div>
   );
