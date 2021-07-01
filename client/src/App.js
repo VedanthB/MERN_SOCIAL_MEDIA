@@ -8,10 +8,10 @@ import Home from "./pages/home";
 import { refreshToken } from "./redux/actions/authAction";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
-import StatusModal from "./components/StatusModal";
 import Register from "./pages/register";
 import { getPosts } from "./redux/actions/postAction";
 import SocketClient from "./SocketClient";
+import StatusModal from "./components/StatusModal"
 
 import io from "socket.io-client";
 import { GLOBALTYPES } from "./redux/actions/globalTypes";
