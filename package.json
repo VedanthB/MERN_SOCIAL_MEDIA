@@ -16,10 +16,6 @@
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VedanthB/MERN_SOCIAL_MEDIA.git"
-  },
   "author": "",
   "license": "ISC",
   "bugs": {
