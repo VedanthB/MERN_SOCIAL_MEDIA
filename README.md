@@ -1,4 +1,4 @@
-> Social Media App made with React , Node and Express. Realtime Connection With socket (realtime notifications/ call / videocall )
+> Social Media App made with React, Redux, Node and Express. Realtime Connection With socket (realtime notifications/ call / videocall )
 
 ## Demo: https://mern-orgram.herokuapp.com
 
